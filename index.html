@@ -679,10 +679,10 @@ var FP_NAMES = ['Valor debitado','Valor crédito','Valor efectivo','Cheque','Val
 var CFG = {};
 function loadCfg() {
   try { CFG = JSON.parse(localStorage.getItem('dd_cfg') || '{}'); } catch(e) { CFG = {}; }
-  if (!CFG.scriptUrl) CFG.scriptUrl = '';
+  if (!CFG.scriptUrl) CFG.scriptUrl = 'https://script.google.com/macros/s/AKfycbxyGmnRi9Z_wuytmJoinl_12oTumjvZlcHa9fXuXPDn9jtm9czb065HSBkoFzSpoy6mBg/exec';
   if (!CFG.pass)      CFG.pass      = ADMIN_DEF;
-  if (!CFG.anio)      CFG.anio      = String(new Date().getFullYear());
-  if (!CFG.nombre)    CFG.nombre    = '';
+  if (!CFG.anio)      CFG.anio      = '2026';
+  if (!CFG.nombre)    CFG.nombre    = 'NOTARIA SEXAGESIMA SEGUNDA QUITO';
   if (!CFG.mat)       CFG.mat       = ['Funcionario 1','Funcionario 2','Funcionario 3'];
   if (!CFG.tipoActos) CFG.tipoActos = [
     '73 - Promesas de celebrar contratos',
@@ -705,9 +705,9 @@ function loadCfg() {
     '90 - Cesión de participaciones',
     '74 - Reconocimiento de firmas de vehículo'
   ];
-  if (CFG._nomL  === undefined) CFG._nomL  = false;
-  if (CFG._anioL === undefined) CFG._anioL = false;
-  if (CFG._urlL  === undefined) CFG._urlL  = false;
+  if (CFG._nomL  === undefined) CFG._nomL  = true;
+  if (CFG._anioL === undefined) CFG._anioL = true;
+  if (CFG._urlL  === undefined) CFG._urlL  = true;
 }
 loadCfg();
 
