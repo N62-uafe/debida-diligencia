@@ -450,9 +450,9 @@ var CFG_PR = {};
 
 function loadCfg() {
   try { CFG_PR = JSON.parse(localStorage.getItem('dd_cfg') || '{}'); } catch(e) { CFG_PR = {}; }
-  if (!CFG_PR.scriptUrl) CFG_PR.scriptUrl = '';
+  if (!CFG_PR.scriptUrl) CFG_PR.scriptUrl = 'https://script.google.com/macros/s/AKfycbxyGmnRi9Z_wuytmJoinl_12oTumjvZlcHa9fXuXPDn9jtm9czb065HSBkoFzSpoy6mBg/exec';
   if (!CFG_PR.pass) CFG_PR.pass = ADMIN_DEF;
-  if (!CFG_PR._urlL) CFG_PR._urlL = false;
+  if (!CFG_PR._urlL) CFG_PR._urlL = true;
 }
 loadCfg();
 
