@@ -644,8 +644,8 @@ function jsonp(url, params, cb) {
 
 // ════ INIT ═════════════════════════════════════════════════════════════════
 window.addEventListener('DOMContentLoaded', function() {
-  var saved = localStorage.getItem('dd_admin_url');
-  if (saved) E('lUrl').value = saved;
+var saved = localStorage.getItem('dd_admin_url') ||
+'https://script.google.com/macros/s/AKfycbxyGmnRi9Z_wuytmJoinl_12oTumjvZlcHa9fXuXPDn9jtm9czb065HSBkoFzSpoy6mBg/exec'; if (saved) E('lUrl').value = saved;
 });
 </script>
 </body>
