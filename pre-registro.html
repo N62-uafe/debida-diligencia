@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache">
 <title>Pre-Registro &mdash; Debida Diligencia</title>
 <style>
@@ -177,7 +177,7 @@ footer strong{color:var(--t)}
       <label class="cl">Nombre de la Notar&iacute;a <span id="nomLkBdg" class="lbdg" style="display:none">&#128274; Fijo</span></label>
       <input type="text" id="cfgNomInp" class="ci" placeholder="Ej: Notar&iacute;a 69 del Cant&oacute;n Ba&ntilde;os">
       <label class="cl">URL del Apps Script (/exec) <span class="req">*</span> <span id="urlLkBdg" class="lbdg" style="display:none">&#128274; Fijo</span></label>
-      <input type="url" id="cfgUrlInp" class="ci" placeholder="https://script.google.com/macros/s/.../exec" style="font-size:13px;font-family:monospace">
+      <input type="text" id="cfgUrlInp" class="ci" placeholder="https://script.google.com/macros/s/.../exec" style="font-size:13px;font-family:monospace">
       <div style="display:flex;gap:10px;align-items:center;margin-top:8px;margin-bottom:4px">
         <button class="btn-out" style="padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;border-radius:8px;min-height:40px" onclick="testCfgConn()">Probar</button>
         <span id="cfgConnRes" style="font-size:12px"></span>
@@ -751,7 +751,7 @@ function jsonp(url, params, cb) {
     nb.textContent = (nom ? nom + ' · ' : '') + 'Debida Diligencia · Soluciones D&S';
   }
 })();
-ping();
+setTimeout(ping, 1500);
 </script>
 </body>
 </html>
