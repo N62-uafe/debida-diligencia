@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0D7377">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache">
 <title>Pre-Registro &mdash; Debida Diligencia</title>
 <style>
@@ -496,8 +497,9 @@ function ping() {
       E('cnBdg').textContent = '✓ Conectado';
       E('cnBdg').className = 'ok';
     } else {
-      E('cnBdg').textContent = '✗ Error';
+      E('cnBdg').textContent = '⟳ Reconectando';
       E('cnBdg').className = 'err';
+      setTimeout(ping, 4000);
     }
   });
 }
@@ -726,7 +728,7 @@ function jsonp(url, params, cb) {
     delete window[cbn];
     try { document.head.removeChild(sc); } catch(x) {}
     cb({status:'ERROR', msg:'Timeout'});
-  }, 14000);
+  }, 20000);
   window[cbn] = function(data) {
     clearTimeout(tm); delete window[cbn];
     try { document.head.removeChild(sc); } catch(x) {}
@@ -751,7 +753,7 @@ function jsonp(url, params, cb) {
     nb.textContent = (nom ? nom + ' · ' : '') + 'Debida Diligencia · Soluciones D&S';
   }
 })();
-setTimeout(ping, 1500);
+setTimeout(ping, 2000);
 </script>
 </body>
 </html>
