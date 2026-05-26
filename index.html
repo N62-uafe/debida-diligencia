@@ -923,13 +923,31 @@ function buscarInt() {
 
 function cargarInt(encoded) {
   var r; try { r = JSON.parse(decodeURIComponent(encoded)); } catch(e) { return; }
-  var M = {cedula:'cedula',nombres:'nombres',ecivil:'ecivil',nacion:'nacion',profesion:'profesion',
-    telefono:'telefono',correo:'correo',direccion:'direccion',ciudad:'ciudad_cli',empresa:'empresa',
-    actividad:'actividad',ingreso:'ingreso',patrimonio:'patrimonio',ofondos:'ofondos',
-    ruc:'ruc',eruc:'eruc',regimen:'regimen',tact:'tact',tipo_id:'tipo_id'};
+  // Campos texto / select
+  var M = {
+    tipo_id:'tipo_id', cedula:'cedula',   nombres:'nombres',   ruc:'ruc',
+    nacion:'nacion',   ecivil:'ecivil',   profesion:'profesion',
+    telefono:'telefono',correo:'correo',  direccion:'direccion', ciudad:'ciudad_cli',
+    empresa:'empresa', actividad:'actividad', ingreso:'ingreso',
+    patrimonio:'patrimonio', ofondos:'ofondos', tact:'tact',
+    // Persona Jurídica (viene del pre-registro si tipo=RUC)
+    jur_empresa:'pjraz', jur_repnom:'pjrep', jur_repced:'pjci'
+  };
   Object.keys(M).forEach(function(s) {
-    var el = E(M[s]); if (el && r[s] !== undefined) el.value = r[s];
+    var el = E(M[s]); if (el && r[s] !== undefined && r[s] !== '') el.value = r[s];
   });
+  // Radios: eruc, regimen
+  ['eruc','regimen'].forEach(function(n) {
+    if (!r[n]) return;
+    var radio = document.querySelector('input[name="' + n + '"][value="' + r[n] + '"]');
+    if (radio) radio.checked = true;
+  });
+  // Estado civil (puede activar/desactivar sección cónyuge)
+  if (r.ecivil) { var ec = E('ecivil'); if (ec) togCony(r.ecivil); }
+  // Abrir sección II y VII si hay PJ
+  if (r.jur_empresa || r.jur_repnom) {
+    var s7 = E('s7'); if (s7) s7.classList.add('open');
+  }
   var bdg = E('intBdg');
   var fuente = r.fuente ? ' (fuente: ' + r.fuente + ')' : '';
   if (bdg) { bdg.style.display = 'block'; bdg.textContent = '\u2713 Datos de ' + (r.nombres || 'el interviniente') + ' cargados correctamente' + fuente + '.'; }
