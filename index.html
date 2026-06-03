@@ -201,7 +201,7 @@ textarea{resize:vertical;min-height:54px}
       </div>
       <div class="g3">
         <div class="fld"><label>N&deg; de Matriz <span class="req">*</span></label><input type="text" id="nro" maxlength="17" placeholder="" oninput="cc(this,17)"><div class="cc">0/17</div></div>
-        <div class="fld"><label>Tipo de Interviniente<span class="req">*</span></label><select id="tipo_int" ><option value="">— Seleccionar —</option><option>Vendedor</option><option>Comprador</option><option>Donante</option><option>Donatario</option><option>Acreedor</option><option>Deudor</option><option>Cedente</option><option>Cesionario</option><option>Garante</option><option>Otro</option></select></div>
+        <div class="fld"><label>Tipo de Interviniente<span class="req">*</span></label><select id="tipo_int" ><option value="">— Seleccionar —</option><option>ACCIONISTA</option><option>ACREEDOR(A)</option><option>ACREEDOR(A) HIPOTECARIO(A)</option><option>ACREEDOR(A) PRENDARIO(A)</option><option>ADHERENTE</option><option>ADJUDICANTE</option><option>ADJUDICATARIO(A)</option><option>ADJUDICATARIO(A) DEUDOR(A) HIPOTECARIO(A)</option><option>APODERADO(A)</option><option>APODERADO(A) ESPECIAL</option><option>APODERADO(A) GENERAL</option><option>ARRENDADOR(A)</option><option>ARRENDATARIO(A)</option><option>BENEFICIARIO(A)</option><option>CEDENTE</option><option>CESIONARIO(A)</option><option>CO PROPIETARIO(A)</option><option>COMODANTE</option><option>COMODATARIO(A)</option><option>COMPRADOR(A)</option><option>COMPRADOR(A)-DEUDOR(A)</option><option>COMPRADOR(A)-DEUDOR(A)-HIPOTECARIO(A)</option><option>COMPRADOR/DEUDOR HIPOTECARIO</option><option>COMPARECIENTE</option><option>CONSTITUYENTE</option><option>CONSTITUYENTE-ADHERENTE</option><option>CONTRATANTE</option><option>CONTRATISTA</option><option>DEUDOR(A) HIPOTECARIO(A)</option><option>DEUDOR(A) PRENDARIO(A)</option><option>DEUDOR(A) PRINCIPAL</option><option>DONANTE</option><option>DONATARIO(A)</option><option>FIADOR(A)</option><option>FIDUCIARIA</option><option>FIDUCIARIO</option><option>GARANTE</option><option>HEREDERO(A)</option><option>HEREDERO(A)-LEGATORIO(A)-LEGITIMARIO(A)</option><option>HEREDERO(A)-LEGITIMARIO(A)</option><option>LEGATARIO(A)</option><option>MANDANTE</option><option>MANDATARIO(A)</option><option>NUDO PROPIETARIO</option><option>PERMUTANTE</option><option>PETICIONARIO(A)</option><option>PORDERDANTE</option><option>PROMITENTE ARRENDADOR(A)</option><option>PROMITENTE ARRENDATARIO(A)</option><option>PROMITENTE CEDENTE</option><option>PROMITENTE CESIONARIO(A)</option><option>PROMITENTE COMPRADOR(A)</option><option>PROMITENTE DONANTE</option><option>PROMITENTE DONTARIO</option><option>PROMITENTE VENDEDOR(A)</option><option>PROPIETARIO(A)</option><option>REPRESENTANTE LEGAL</option><option>SOCIO(A)</option><option>TESTADOR(A)</option><option>TESTIGO</option><option>TRADUCTOR(A)</option><option>USUFRUCTUARIO(A)</option><option>VENDEDOR(A)</option><option>VENDEDOR(A)-ACREEDOR(A)</option><option>VENDEDOR(A)-ACREEDOR(A)-HIPOTECARIO(A)</option><option>PRESIDENTE EJECUTIVO</option><option>GERENTE GENERAL</option><option>PRESIDENTE</option><option>GERENTE</option><option>VICEPRESIDENTE</option><option>VICEPRESIDENTE EJECUTIVO</option></select></div>
         <div class="fld"><label>Fecha de la Operaci&oacute;n<span class="req">*</span></label><input type="date" id="fop"></div>
       </div>
       <div class="g3" style="margin-top:4px">
@@ -589,7 +589,7 @@ textarea{resize:vertical;min-height:54px}
     <button class="btn bo" onclick="openHist()">&#128203; Historial / Editar</button>
     <button class="btn bo" onclick="doNew()">&#8635; Nuevo</button>
     <button class="btn bp" id="bsv" onclick="doSave()" disabled>&#128190; Guardar</button>
-    <div style="margin-left:auto;font-size:9px;color:#9CA3AF">Powered by <strong style="color:#0D7377">Soluciones D&amp;S</strong> &mdash; <a href="mailto:esantiagoguerrerov@hotmail.com" style="color:#9CA3AF;text-decoration:none">esantiagoguerrerov@hotmail.com</a> &mdash; <a href="tel:+593984759373" style="color:#9CA3AF;text-decoration:none">+593 98 475 9373</a></div>
+
   </div>
 </div>
 
@@ -680,10 +680,10 @@ var FP_NAMES = ['Valor debitado','Valor crédito','Valor efectivo','Cheque','Val
 var CFG = {};
 function loadCfg() {
   try { CFG = JSON.parse(localStorage.getItem('dd_cfg') || '{}'); } catch(e) { CFG = {}; }
-  if (!CFG.scriptUrl) CFG.scriptUrl = 'https://script.google.com/macros/s/AKfycbxyGmnRi9Z_wuytmJoinl_12oTumjvZlcHa9fXuXPDn9jtm9czb065HSBkoFzSpoy6mBg/exec';
+  if (!CFG.scriptUrl) CFG.scriptUrl = (function(){var _$=['aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNy','b3Mvcy9BS2Z5Y2J4eUdtblJpOVpfd3V5dG1Kb2lu','bF8xMm9UdW1qdlpsY0hhOWZYdVhQRG45anRtOWN6YjA2NUhTQmtvRnpTcG95Nm1CZy9leGVj'];return atob(_$[0])+atob(_$[1])+atob(_$[2]);})() ;
   if (!CFG.pass)      CFG.pass      = ADMIN_DEF;
   if (!CFG.anio)      CFG.anio      = '2026';
-  if (!CFG.nombre)    CFG.nombre    = 'NOTARÍA SEXAGÉSIMA SEGUNDA - QUITO';
+  if (!CFG.nombre)    CFG.nombre    = atob('Tk9UQVLNQSBTRVhBR8lTSU1BIFNFR1VOREEgREVMIENBTlTTTiBRVUlUTw==');
   if (!CFG.mat)       CFG.mat       = ['Funcionario 1','Funcionario 2','Funcionario 3'];
   if (!CFG.tipoActos) CFG.tipoActos = [
     '73 - Promesas de celebrar contratos',
@@ -1176,7 +1176,7 @@ function loadEdit(i) {
     75:'fsri', 76:'rsri', 78:'ingreso', 79:'patrimonio', 80:'ofondos', 81:'odetalle',
     84:'bfnom', 85:'bfced', 86:'bfnac', 87:'bfdir', 88:'bftel', 89:'bfcorreo', 90:'bfrel',
     91:'pjraz', 92:'pjruc', 93:'pjrep', 94:'pjci', 96:'pjben',
-    108:'ncomp', 109:'ffirma', 110:'func', 111:'fdilig', 114:'rotro', 116:'obs'
+    108:'ncomp', 109:'ffirma', 110:'func', 111:'fdilig', 114:'rotro', 117:'obs'
   };
   Object.keys(mapa).forEach(function(idx) {
     var el = E(mapa[idx]); if (el && d[idx] !== undefined) el.value = d[idx];
@@ -1186,8 +1186,55 @@ function loadEdit(i) {
    ['espep',103],['pepfam',104],['dacept',108],['pjestr',95]].forEach(function(p) {
     if (d[p[1]]) { var r = document.querySelector('input[name="' + p[0] + '"][value="' + d[p[1]] + '"]'); if (r) r.checked = true; }
   });
-  if (d[117]) { var r = document.querySelector('input[name="decision"][value="' + d[117] + '"]'); if (r) r.checked = true; }
-  if (d[115]) { RIESGO = d[115]; document.querySelectorAll('.rp').forEach(function(p) { p.classList.toggle('on', p.dataset.v === RIESGO); }); }
+  if (d[116]) { var r = document.querySelector('input[name="decision"][value="' + d[116] + '"]'); if (r) r.checked = true; }
+  if (d[114]) { RIESGO = d[114]; document.querySelectorAll('.rp').forEach(function(p) { p.classList.toggle('on', p.dataset.v === RIESGO); }); }
+  // Recuperar checkboxes de actos (índice 33 = actosVals separados por coma)
+  if (d[33]) {
+    var codsActos = d[33].split(',').map(function(s){ return s.trim(); });
+    document.querySelectorAll('.chkacto').forEach(function(chk) {
+      var cod = chk.value.split(' - ')[0].trim();
+      if (codsActos.indexOf(cod) >= 0) {
+        chk.checked = true;
+        chk.closest('label').classList.add('sel');
+      }
+    });
+  }
+  if (d[34]) { var ot = E('chk_otro_txt'); if(ot) ot.value = d[34]; var co = E('chk_otro'); if(co){ co.checked=true; co.closest('label').classList.add('sel'); } }
+  // Recuperar bases consultadas (índice 97 = valores separados por coma)
+  if (d[97]) {
+    var basesArr = d[97].split(',').map(function(s){ return s.trim(); });
+    document.querySelectorAll('.bchk').forEach(function(chk) {
+      if (basesArr.indexOf(chk.value.trim()) >= 0) {
+        chk.checked = true;
+        chk.closest('label').classList.add('sel');
+      }
+    });
+  }
+  // Recuperar factores de riesgo (índice 113)
+  if (d[113]) {
+    var factArr = d[113].split(',').map(function(s){ return s.trim(); });
+    document.querySelectorAll('.rfact').forEach(function(chk) {
+      if (factArr.indexOf(chk.value.trim()) >= 0) {
+        chk.checked = true;
+        chk.closest('label').classList.add('sel');
+      }
+    });
+  }
+  // Recuperar respaldo documental (índice 82)
+  if (d[82]) {
+    var rdocArr = d[82].split(',').map(function(s){ return s.trim(); });
+    document.querySelectorAll('.rdoc').forEach(function(chk) {
+      if (rdocArr.indexOf(chk.value.trim()) >= 0) chk.checked = true;
+    });
+  }
+  // PEP panel
+  if (d[103] === 'Sí' || d[104] === 'Sí') {
+    var pf = E('pepf'); if (pf) pf.style.display = 'grid';
+  }
+  // Beneficiario final
+  if (d[83] === 'No') { var bf = E('bff'); if (bf) bf.style.display = 'grid'; }
+  // Cónyuge
+  if (d[52]) togCony(d[52]);
   // FP
   FP_KEYS.forEach(function(k, fi) {
     var mI = 16 + fi, rI = 23 + fi;
@@ -1506,60 +1553,28 @@ function closeSaveModalAndPrint() {
 }
 
 function resetSoloInterviniente() {
-  // Limpiar búsqueda
+  // Limpiar SOLO búsqueda e identificación del cliente (Sección II)
+  // Conserva: I (operación, FP, bien), III-XII (todo lo demás)
   var ic = E('intCed'); if (ic) ic.value = '';
   var ir = E('intRes'); if (ir) ir.innerHTML = '';
   var ib = E('intBdg'); if (ib) { ib.style.display='none'; ib.textContent=''; }
   var ico = E('intCount'); if (ico) ico.style.display='none';
   var ict = E('intCountTxt'); if (ict) ict.textContent='';
-  // Limpiar campos del cliente (Sección II) — SE CONSERVA el resto de la Sección I
+  // Limpiar SOLO campos del cliente — Sección II
   ['tipo_id','cedula','nombres','ruc','nacion','ecivil','profesion',
    'actividad','direccion','ciudad_cli','telefono','correo','empresa','tact'].forEach(function(id) {
     var e = E(id); if (e) { e.value = ''; e.classList.remove('ef'); }
   });
-  // Limpiar cónyuge (Sección III)
-  ['ctipo_id','cced','cnom','cruc','cnac','cprof','cact','cdir','ctel','ccorreo','cemp'].forEach(function(id) {
-    var e = E(id); if (e) e.value = '';
-  });
+  // Resetear estado civil (cierre cónyuge si estaba forzado)
   togCony('');
-  // Limpiar tributaria (Sección IV)
-  ['fsri','rsri'].forEach(function(id){ var e=E(id); if(e) e.value=''; });
-  ['eruc','regimen','oblig','contrib'].forEach(function(n) {
-    document.querySelectorAll('input[name="'+n+'"]').forEach(function(r){ r.checked=false; });
-  });
-  // Limpiar económico (Sección V)
-  ['ingreso','patrimonio','ofondos','odetalle'].forEach(function(id){ var e=E(id); if(e) e.value=''; });
-  document.querySelectorAll('.rdoc').forEach(function(e){ e.checked=false; });
-  // Limpiar beneficiario final (Sección VI)
-  ['bfnom','bfced','bfnac','bfdir','bftel','bfcorreo','bfrel'].forEach(function(id){ var e=E(id); if(e) e.value=''; });
-  ['cpropia'].forEach(function(n){ document.querySelectorAll('input[name="'+n+'"]').forEach(function(r){ r.checked=false; }); });
-  var bff=E('bff'); if(bff) bff.style.display='none';
-  // Limpiar PJ (Sección VII)
-  ['pjraz','pjruc','pjrep','pjci','pjben'].forEach(function(id){ var e=E(id); if(e) e.value=''; });
-  ['pjestr'].forEach(function(n){ document.querySelectorAll('input[name="'+n+'"]').forEach(function(r){ r.checked=false; }); });
-  // Limpiar bases (Sección VIII)
-  document.querySelectorAll('.bchk').forEach(function(e){ e.checked=false; e.closest('label').classList.remove('sel'); });
-  var fb=E('fbases'); if(fb) fb.value='';
-  // Limpiar PEP (Sección IX)
-  ['pepent','pepcargo','pepperiodo'].forEach(function(id){ var e=E(id); if(e) e.value=''; });
-  ['espep','pepfam'].forEach(function(n){ document.querySelectorAll('input[name="'+n+'"]').forEach(function(r){ r.checked=false; }); });
-  var pf=E('pepf'); if(pf) pf.style.display='none';
-  // Limpiar riesgo y decisión (Secciones X y XI)
-  document.querySelectorAll('.rfact').forEach(function(e){ e.checked=false; e.closest('label').classList.remove('sel'); });
-  var ro=E('rotro'); if(ro) ro.value='';
-  document.querySelectorAll('.rp').forEach(function(p){ p.classList.remove('on'); });
-  RIESGO='';
-  ['dacept'].forEach(function(n){ document.querySelectorAll('input[name="'+n+'"]').forEach(function(r){ r.checked=false; }); });
-  ['decision'].forEach(function(n){ document.querySelectorAll('input[name="'+n+'"]').forEach(function(r){ r.checked=false; }); });
-  // Limpiar uso interno (Sección XII)
-  ['ncomp','ffirma','func','fdilig','obs'].forEach(function(id){ var e=E(id); if(e) e.value=''; });
-  // Actualizar contadores de caracteres solo de los campos limpiados
+  // Actualizar contadores de solo los campos limpiados
   document.querySelectorAll('.cc').forEach(function(el) {
     var inp = el.previousElementSibling;
     if (inp && inp.maxLength > 0) el.textContent = inp.value.length + '/' + inp.maxLength;
   });
-  // Rehabilitar botón guardar
+  // Rehabilitar botón guardar y auto-rellenar funcionario
   E('bsv').disabled = !FUNC;
+  if (FUNC && E('func')) E('func').value = FUNC;
   // Abrir sección II y hacer scroll
   var s2 = E('s2'); if (s2) { s2.classList.add('open'); s2.scrollIntoView({behavior:'smooth', block:'start'}); }
 }
