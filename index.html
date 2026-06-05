@@ -1176,18 +1176,18 @@ function loadEdit(i) {
     75:'fsri', 76:'rsri', 78:'ingreso', 79:'patrimonio', 80:'ofondos', 81:'odetalle',
     84:'bfnom', 85:'bfced', 86:'bfnac', 87:'bfdir', 88:'bftel', 89:'bfcorreo', 90:'bfrel',
     91:'pjraz', 92:'pjruc', 93:'pjrep', 94:'pjci', 96:'pjben',
-    108:'ncomp', 109:'ffirma', 110:'func', 111:'fdilig', 114:'rotro', 117:'obs'
+    105:'ncomp', 106:'ffirma', 107:'func', 108:'fdilig', 110:'rotro', 113:'obs'
   };
   Object.keys(mapa).forEach(function(idx) {
     var el = E(mapa[idx]); if (el && d[idx] !== undefined) el.value = d[idx];
   });
   // Radios
   [['eruc',72],['regimen',73],['oblig',74],['contrib',75],['cpropia',83],
-   ['espep',103],['pepfam',104],['dacept',108],['pjestr',95]].forEach(function(p) {
+   ['espep',99],['pepfam',100],['dacept',104],['pjestr',95]].forEach(function(p) {
     if (d[p[1]]) { var r = document.querySelector('input[name="' + p[0] + '"][value="' + d[p[1]] + '"]'); if (r) r.checked = true; }
   });
-  if (d[116]) { var r = document.querySelector('input[name="decision"][value="' + d[116] + '"]'); if (r) r.checked = true; }
-  if (d[114]) { RIESGO = d[114]; document.querySelectorAll('.rp').forEach(function(p) { p.classList.toggle('on', p.dataset.v === RIESGO); }); }
+  if (d[112]) { var r = document.querySelector('input[name="decision"][value="' + d[112] + '"]'); if (r) r.checked = true; }
+  if (d[111]) { RIESGO = d[111]; document.querySelectorAll('.rp').forEach(function(p) { p.classList.toggle('on', p.dataset.v === RIESGO); }); }
   // Recuperar checkboxes de actos (índice 33 = actosVals separados por coma)
   if (d[33]) {
     var codsActos = d[33].split(',').map(function(s){ return s.trim(); });
@@ -1211,8 +1211,8 @@ function loadEdit(i) {
     });
   }
   // Recuperar factores de riesgo (índice 113)
-  if (d[113]) {
-    var factArr = d[113].split(',').map(function(s){ return s.trim(); });
+  if (d[109]) {
+    var factArr = d[109].split(',').map(function(s){ return s.trim(); });
     document.querySelectorAll('.rfact').forEach(function(chk) {
       if (factArr.indexOf(chk.value.trim()) >= 0) {
         chk.checked = true;
@@ -1228,7 +1228,7 @@ function loadEdit(i) {
     });
   }
   // PEP panel
-  if (d[103] === 'Sí' || d[104] === 'Sí') {
+  if (d[99] === 'Sí' || d[100] === 'Sí') {
     var pf = E('pepf'); if (pf) pf.style.display = 'grid';
   }
   // Beneficiario final
@@ -1454,23 +1454,23 @@ function doPrint() {
   var s8 = fvFull('Bases Consultadas', d[97]) + fv('Fecha Consulta', d[98]);
 
   // Sección IX: PEP
-  var s9 = fv('Es PEP', d[103]) + fv('Familiar/Relacionado PEP', d[104]) +
-    fv('Entidad PEP', d[105]) + fv('Cargo PEP', d[106]) + fv('Per\u00EDodo PEP', d[107]);
+  var s9 = fv('Es PEP', d[99]) + fv('Familiar/Relacionado PEP', d[100]) +
+    fv('Entidad PEP', d[101]) + fv('Cargo PEP', d[102]) + fv('Per\u00EDodo PEP', d[103]);
 
   // Sección X/XI: Riesgo y Decisión
-  var nr = RIESGO || d[115] || '';
+  var nr = RIESGO || d[111] || '';
   var rsm = {BAJO:'#D1FAE5,#2E7D32', MEDIO:'#FEF3C7,#B45309', ALTO:'#FFEDD5,#E65100', 'MUY ALTO':'#FEE2E2,#B71C1C'};
   var rsc = (rsm[nr] || '#F3F4F6,#555').split(',');
   var riesgoHtml = nr ? '<div class="pf"><div class="pl">Nivel de Riesgo</div><div class="pv"><span style="background:' + rsc[0] + ';color:' + rsc[1] + ';border:1.5px solid ' + rsc[1] + ';padding:2px 10px;border-radius:10px;font-weight:800">' + nr + '</span></div></div>' : '';
-  var factoresStr = d[113] || '';
-  var otroFact = d[114] || '';
+  var factoresStr = d[109] || '';
+  var otroFact = d[110] || '';
   if (otroFact) factoresStr = factoresStr ? factoresStr + '; ' + otroFact : otroFact;
   var s10 = (factoresStr ? '<div class="pf" style="grid-column:1/-1"><div class="pl">Factores de Riesgo</div><div class="pv">' + factoresStr + '</div></div>' : '') +
-    riesgoHtml + fv('Decisi\u00F3n', d[116]) + fvFull('Observaciones', d[117]);
+    riesgoHtml + fv('Decisi\u00F3n', d[112]) + fvFull('Observaciones', d[113]);
 
   // Sección XII: Uso Interno / Firma
-  var s12 = fv('Declaraci\u00F3n Aceptada', d[108]) + fv('Compareciente (firma)', d[109]) +
-    fv('Fecha Firma', d[110]) + fv('Funcionario Diligencia', d[111]) + fv('Fecha Diligencia', d[112]);
+  var s12 = fv('Declaraci\u00F3n Aceptada', d[104]) + fv('Compareciente (firma)', d[105]) +
+    fv('Fecha Firma', d[106]) + fv('Funcionario Diligencia', d[107]) + fv('Fecha Diligencia', d[108]);
 
   E('pd').innerHTML = '<div class="pw">' +
     '<div class="phd"><div><h1>FORMULARIO DEBIDA DILIGENCIA \u2014 ' + nom.toUpperCase() + '</h1>' +
@@ -1494,8 +1494,8 @@ function doPrint() {
     sec('#1B3A6B','XII. USO INTERNO', s12) +
     '<div class="pfirm-wrap">' +
     '<div class="pfirm">' +
-    '<div class="pfirb"><div class="pfirl"></div><div class="pfirc">Compareciente: ' + (d[109]||'___________________') + '<br>Fecha: ' + (d[110]||'_______________') + '</div></div>' +
-    '<div class="pfirb"><div class="pfirl"></div><div class="pfirc">Funcionario: ' + (d[111]||'___________________') + '<br>Fecha: ' + (d[112]||'_______________') + '</div></div>' +
+    '<div class="pfirb"><div class="pfirl"></div><div class="pfirc">Compareciente: ' + (d[105]||'___________________') + '<br>Fecha: ' + (d[106]||'_______________') + '</div></div>' +
+    '<div class="pfirb"><div class="pfirl"></div><div class="pfirc">Funcionario: ' + (d[107]||'___________________') + '<br>Fecha: ' + (d[108]||'_______________') + '</div></div>' +
     '<div class="pfirb"><div class="pfirl"></div><div class="pfirc">Firma Notario/a \u00B7 Sello<br>Fecha: _______________</div></div>' +
     '</div>' +
     '<div class="pft">Soluciones D&S \u00B7 Formulario Debida Diligencia \u2014 ' + nom + ' \u00B7 ' + anio + ' \u00B7 ' + hoy + '</div>' +
