@@ -680,7 +680,7 @@ var FP_NAMES = ['Valor debitado','Valor crédito','Valor efectivo','Cheque','Val
 var CFG = {};
 function loadCfg() {
   try { CFG = JSON.parse(localStorage.getItem('dd_cfg') || '{}'); } catch(e) { CFG = {}; }
-  if (!CFG.scriptUrl) CFG.scriptUrl = (function(){var _$=['aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNy','b3Mvcy9BS2Z5Y2J4eUdtblJpOVpfd3V5dG1Kb2lu','bF8xMm9UdW1qdlpsY0hhOWZYdVhQRG45anRtOWN6YjA2NUhTQmtvRnpTcG95Nm1CZy9leGVj'];return atob(_$[0])+atob(_$[1])+atob(_$[2]);})() ;
+  if (!CFG.scriptUrl) CFG.scriptUrl = (function(){var _$=['aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNy','b3Mvcy9BS2Z5Y2J4eUdtblJpOVpfd3V5dG1Kb2lubF8xMm9UdW1qdg==','WmxjSGE5Zlh1WFBEbjlqdG05Y3piMDY1SFNCa29GelNwb3k2bUJnL2V4ZWM='];return atob(_$[0])+atob(_$[1])+atob(_$[2]);})() ;
   if (!CFG.pass)      CFG.pass      = ADMIN_DEF;
   if (!CFG.anio)      CFG.anio      = '2026';
   if (!CFG.nombre)    CFG.nombre    = atob('Tk9UQVLNQSBTRVhBR8lTSU1BIFNFR1VOREEgREVMIENBTlTTTiBRVUlUTw==');
